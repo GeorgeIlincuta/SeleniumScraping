@@ -20,17 +20,17 @@ namespace SeleniumScraping
 
             foreach (var item in parent)
             {
-                var title = item.FindElement(By.XPath(".//*[@class=\"lheight22 margintop5\"]")).Text;
-                var price = item.FindElement(By.XPath(".//*[@class=\"price\"]")).Text;
+                var title    = item.FindElement(By.XPath(".//*[@class=\"lheight22 margintop5\"]")).Text;
+                var price    = item.FindElement(By.XPath(".//*[@class=\"price\"]")).Text;
                 var location = item.FindElement(By.XPath(".//*[@class=\"lheight16\"]/small[1]/span")).Text;
-                var time = item.FindElement(By.XPath(".//*[@class=\"lheight16\"]/small[2]/span")).Text;
+                var time     = item.FindElement(By.XPath(".//*[@class=\"lheight16\"]/small[2]/span")).Text;
 
                 home.Add(new Apartment()
                 {
-                    Title = title,
-                    Price = price,
+                    Title    = title,
+                    Price    = price,
                     Location = location,
-                    Time = time
+                    Time     = time
                 });
             }
 
