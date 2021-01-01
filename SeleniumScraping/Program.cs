@@ -14,21 +14,23 @@ namespace SeleniumScraping
             IWebDriver driver = new ChromeDriver(options);
             driver.Navigate().GoToUrl("https://www.olx.ro/imobiliare/apartamente-garsoniere-de-vanzare/bucuresti/");
 
-            var home = new List<Apartament>();
+            var home = new List<Apartment>();
 
-            var title = driver.FindElements(By.XPath("//*[@class=\"lheight22 margintop5\"]"));
-            var price = driver.FindElements(By.XPath("//*[@class=\"price\"]"));
-            var location = driver.FindElements(By.XPath("//*[@class=\"lheight16\"]/small[1]/span"));
-            var time = driver.FindElements(By.XPath("//*[@class=\"lheight16\"]/small[2]/span"));
+            var parent = driver.FindElements(By.XPath("//*[@class=\"offer  \"]"));
 
-            for (var i = 0; i <= title.Count - 1; i++)
+            foreach (var item in parent)
             {
-                home.Add(new Apartament()
+                var title = item.FindElement(By.XPath(".//*[@class=\"lheight22 margintop5\"]")).Text;
+                var price = item.FindElement(By.XPath(".//*[@class=\"price\"]")).Text;
+                var location = item.FindElement(By.XPath(".//*[@class=\"lheight16\"]/small[1]/span")).Text;
+                var time = item.FindElement(By.XPath(".//*[@class=\"lheight16\"]/small[2]/span")).Text;
+
+                home.Add(new Apartment()
                 {
-                    Title = title[i].Text,
-                    Price = price[i].Text,
-                    Location = location[i].Text,
-                    Time = time[i].Text
+                    Title = title,
+                    Price = price,
+                    Location = location,
+                    Time = time
                 });
             }
 

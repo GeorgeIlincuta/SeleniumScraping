@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SeleniumScraping
 {
-    class Apartament
+    class Apartment
     {
         public string Title { get; set; }
         public string Price { get; set; }
